@@ -1,9 +1,12 @@
 <html>
 <head>
+    <meta charset="UTF-8">
+	<title>Squads</title>
+    <link rel="stylesheet" type="text/css" href="squads.css">
 </head>
 <body>
 
-<div class="h2">
+<div class="tier-title">
     Tier 0
 </div>
 <div id="tier0">
@@ -20,10 +23,12 @@
 		$.getJSON("characters.json", function(characters){
 		    $.getJSON("tier-0.json", function(squads){
 			    $.each(squads, function(i, squad){
+				    var squadDiv = $("<div>");
 				    for(var i = 1; i <= 5; i++){
 					    unit = _.findWhere(characters, {base_id: squad[i]});
-					    $("<img>").attr("src", "https://swgoh.gg" + unit.image).appendTo($("#tier0"));
+					    $("<img>").attr("src", "https://swgoh.gg" + unit.image).appendTo($(squadDiv));
 					}
+					$(squadDiv).appendTo($("#tier0"));
 				});
 			});
 			$.each(characters, function(i, item){
