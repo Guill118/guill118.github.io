@@ -13,7 +13,7 @@ Hello World
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$.getJSON("/characters.json", function(data){
+		$.getJSON("characters.json", function(data){
 			$.each(data, function(i, item){
 			   $("<div>").append(item.base_id).appendTo($("#squads"));
 			});
