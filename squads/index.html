@@ -12,6 +12,24 @@
 <div id="tier0">
 </div>
 
+<div class="tier-title">
+    Tier 1
+</div>
+<div id="tier1">
+</div>
+
+<div class="tier-title">
+    Tier 2
+</div>
+<div id="tier2">
+</div>
+
+<div class="tier-title">
+    Tier 3
+</div>
+<div id="tier3">
+</div>
+
 <div id="squads">
 </div>
 
@@ -31,9 +49,40 @@
 					$(squadDiv).appendTo($("#tier0"));
 				});
 			});
-			$.each(characters, function(i, item){
-			   $("<div>").append(item.base_id).appendTo($("#squads"));
+			$.getJSON("tier-1.json", function(squads){
+			    $.each(squads, function(i, squad){
+				    var squadDiv = $("<div>");
+				    for(var i = 1; i <= 5; i++){
+					    unit = _.findWhere(characters, {base_id: squad[i]});
+					    $("<img>").attr("src", "https://swgoh.gg" + unit.image).appendTo($(squadDiv));
+					}
+					$(squadDiv).appendTo($("#tier1"));
+				});
 			});
+			$.getJSON("tier-2.json", function(squads){
+			    $.each(squads, function(i, squad){
+				    var squadDiv = $("<div>");
+				    for(var i = 1; i <= 5; i++){
+					    unit = _.findWhere(characters, {base_id: squad[i]});
+					    $("<img>").attr("src", "https://swgoh.gg" + unit.image).appendTo($(squadDiv));
+					}
+					$(squadDiv).appendTo($("#tier2"));
+				});
+			});
+			$.getJSON("tier-3.json", function(squads){
+			    $.each(squads, function(i, squad){
+				    var squadDiv = $("<div>");
+				    for(var i = 1; i <= 5; i++){
+					    unit = _.findWhere(characters, {base_id: squad[i]});
+					    $("<img>").attr("src", "https://swgoh.gg" + unit.image).appendTo($(squadDiv));
+					}
+					$(squadDiv).appendTo($("#tier3"));
+				});
+			});
+			
+			/*$.each(characters, function(i, item){
+			   $("<div>").append(item.base_id).appendTo($("#squads"));
+			});*/
 		});
 	});
 </script>
