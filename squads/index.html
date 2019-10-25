@@ -3,7 +3,11 @@
 </head>
 <body>
 
-Hello World
+<div class="h2">
+    Tier 0
+</div>
+<div id="tier0">
+</div>
 
 <div id="squads">
 </div>
@@ -13,8 +17,16 @@ Hello World
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$.getJSON("characters.json", function(data){
-			$.each(data, function(i, item){
+		$.getJSON("characters.json", function(characters){
+		    $.getJSON("tier-0.json", function(squads){
+			    $.each(squads, function(i, squad){
+				    for(var i = 1; i <= 5; i++){
+					    unit = _.findWhere(characters, {base_id: squad[i]});
+					    $("<img>").attr("src", "https://swgoh.gg" + unit.image).appendTo($("#tier0"));
+					}
+				});
+			});
+			$.each(characters, function(i, item){
 			   $("<div>").append(item.base_id).appendTo($("#squads"));
 			});
 		});
