@@ -1,0 +1,113 @@
+[
+  {
+    "name":"General Skywalker",
+	"unlock":{
+	  "id":"GENERALSKYWALKER",
+	  "name":"General Skywalker"
+	},
+	"chars":[
+	  {
+	    "id":"AHSOKATANO",
+	    "name":"Ahsoka Tano",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"C3POLEGENDARY",
+	    "name":"C-3PO",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"GENERALKENOBI",
+	    "name":"General Kenobi",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"PADMEAMIDALA",
+	    "name":"Padme Amidala",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"SHAAKTI",
+	    "name":"Shaak Ti",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"ASAJVENTRESS",
+	    "name":"Asajj Ventress",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"B1BATTLEDROIDV2",
+	    "name":"B1 Battle Droid",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"B2SUPERBATTLEDROID",
+	    "name":"B2 Super Battle Droid",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"DROIDEKA",
+	    "name":"Droideka",
+		"GP":"17700"
+	  },
+	  {
+	    "id":"MAGNAGUARD",
+	    "name":"IG-100 MagnaGuard",
+		"GP":"17700"
+	  }
+	],
+	"ships":[
+	  {
+	    "id":"JEDISTARFIGHTERANAKIN",
+	    "name":"Anakin's Eta-2 Starfighter",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"CAPITALJEDICRUISER",
+	    "name":"Endurance",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"CAPITALNEGOTIATOR",
+	    "name":"Negotiator",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"JEDISTARFIGHTERAHSOKATANO",
+	    "name":"Ahsoka Tano's Jedi Starfighter",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"ARC170REX",
+	    "name":"Rex's ARC-170",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"UMBARANSTARFIGHTER",
+	    "name":"Umbaran Starfighter",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"ARC170CLONESERGEANT",
+	    "name":"Clone Sergeant's ARC-170",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"JEDISTARFIGHTERCONSULAR",
+	    "name":"Jedi Consular's Starfighter",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"BLADEOFDORIN",
+	    "name":"Plo Koon's Jedi Starfighter",
+		"GP":"40000"
+	  },
+	  {
+	    "id":"YWINGCLONEWARS",
+	    "name":"BTL-B Y-wing Starfighter",
+		"GP":"40000"
+	  }
+	]
+  }
+]

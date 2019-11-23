@@ -1,0 +1,131 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Events</title>
+    <link rel="stylesheet" type="text/css" href="../base.css">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+WORK IN PROGRESS
+<div>
+    <label for="selMember">Player Name:</label>
+    <select id="selMember" onchange="fct_selMemberOnChange()" style="display:none">
+	    <option value="-1"></option>
+	</select>
+</div>
+<div>
+    <label for="selEvent">Event</label>
+	<select id="selEvent">
+	    <option value="General Skywalker">General Skywalker</option>
+	</select>
+</div>
+<table id="tableRequirements">
+</table>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js" ></script>
+<script type="text/javascript" src="../js/underscore-min.js" ></script>
+<script type="text/javascript" src="../js/csvUtils.js" ></script>
+
+<script type="text/javascript">
+	var allChars;
+	var allShips;
+	var memberNames = new Array();
+	var characters;
+	var ships;
+	var events;
+	$(document).ready(function() {
+		fct_initCharsAndShips();
+		$.getJSON("../characters.json", function(charactersResponse){
+		    characters = charactersResponse;
+		});
+		$.getJSON("../ships.json", function(shipsResponse){
+		    ships = shipsResponse;
+		});
+		$.getJSON("events.json", function(eventsResponse){
+		    events = eventsResponse;
+		});
+	});
+	
+	function fct_initCharsAndShips(){
+		loadCSV("https://dl.dropbox.com/sh/fu29udrhm4sefgp/AABphW-Bec7jLH5KmyflWtYVa/Stats/CharacterStats.csv?raw=1", function(response){
+			allChars = response;
+			_.each(allChars, function(element, index, list){
+				var playerName = element.Player;
+				playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1);
+				element.Player = playerName;
+				if(!_.contains(memberNames, playerName) && !playerName.trim() == ""){
+					memberNames.push(playerName);
+				}
+			});
+			memberNames.sort();
+			_.each(memberNames, function(element, index, list){
+				var option = $("<option>");
+				option.text(element);
+				option.val(element);
+				option.appendTo($("#selMember"));
+			});
+			$("#selMember").show();
+		});
+		loadCSV("https://dl.dropbox.com/sh/fu29udrhm4sefgp/AAA2VMcxmf7VMa7uJOAKW15za/Stats/ShipStats.csv?raw=1", function(response){
+			allShips = response;
+		});
+	}
+	
+	function fct_selMemberOnChange(){
+		var selValue = $("#selMember").val();
+		var selEventVal = $("#selEvent").val();
+		$('#tableRequirements').empty();
+		if(selValue != "-1"){
+			var titleTr = $("<tr>");
+			var titleNameTh = $("<th>");
+			titleNameTh.text("Name");
+			var titleStarTh = $("<th>");
+			titleStarTh.text("Stars");
+			var titleLevelTh = $("<th>");
+			titleLevelTh.text("Level");
+			var titleGearTh = $("<th>");
+			titleGearTh.text("Gear level");
+			var titleGpTh = $("<th>");
+			titleGpTh.text("GP");
+			titleTr.append(titleNameTh).append(titleStarTh).append(titleLevelTh).append(titleGearTh).append(titleGpTh);
+			$('#tableRequirements').append(titleTr);
+			var selEventDef = _.where(events, {name: selEventVal});
+			_.each(selEventDef.chars, function(element, index, list){
+				var req = _.findWhere(allChars, {Player: selValue, Character: element.name});
+				var charTr = $("<tr>");
+				var charNameTd = $("<td>");
+				charNameTd.text(req.Character);
+				var charStarTd = $("<td>");
+				charStarTd.text(req.Character);//Missing info
+				var charLevelTd = $("<td>");
+				charLevelTd.text(req.Level);
+				var charGearTd = $("<td>");
+				charGearTd.text(req.GearTier);
+				var charGpTd = $("<td>");
+				charGpTd.text(req.GP);
+				charTr.append(charNameTd).append(charStarTd).append(charLevelTd).append(charGearTd).append(charGpTd);
+				$('#tableRequirements').append(charTr);
+			});
+			_.each(selEventDef.ships, function(element, index, list){
+				var req = _.findWhere(allShips, {Player: selValue, Ship: element.name});
+				var charTr = $("<tr>");
+				var charNameTd = $("<td>");
+				charNameTd.text(req.Ship);
+				var charStarTd = $("<td>");
+				charStarTd.text(req.Ship);//Missing info
+				var charLevelTd = $("<td>");
+				charLevelTd.text(req.Level);
+				var charGearTd = $("<td>");
+				charGearTd.text("N/A");
+				var charGpTd = $("<td>");
+				charGpTd.text(req.GP);
+				charTr.append(charNameTd).append(charStarTd).append(charLevelTd).append(charGearTd).append(charGpTd);
+				$('#tableRequirements').append(charTr);
+			});
+		}
+	}
+</script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
 	<title>Squads</title>
-    <link rel="stylesheet" type="text/css" href="squads.css">
+    <link rel="stylesheet" type="text/css" href="../base.css">
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -36,12 +36,13 @@
 <div id="squads">
 </div>
 
-<script type="text/javascript" src="jquery-3.4.1.min.js" ></script>
-<script type="text/javascript" src="underscore-min.js" ></script>
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js" ></script>
+<script type="text/javascript" src="../js/underscore-min.js" ></script>
+<script type="text/javascript" src="../js/csvUtils.js" ></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$.getJSON("characters.json", function(characters){
+		$.getJSON("../characters.json", function(characters){
 		    $.getJSON("tier-0.json", function(squads){
 			    $.each(squads, function(i, squad){
 				    var squadDiv = $("<div>");
