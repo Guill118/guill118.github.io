@@ -93,35 +93,39 @@ WORK IN PROGRESS
 			var selEventDef = _.findWhere(events, {name: selEventVal});
 			_.each(selEventDef.chars, function(element, index, list){
 				var req = _.findWhere(allChars, {Player: selValue, Character: element.name});
-				var charTr = $("<tr>");
-				var charNameTd = $("<td>");
-				charNameTd.text(req.Character);
-				var charStarTd = $("<td>");
-				charStarTd.text(req.Character);//Missing info
-				var charLevelTd = $("<td>");
-				charLevelTd.text(req.Level);
-				var charGearTd = $("<td>");
-				charGearTd.text(req.GearTier);
-				var charGpTd = $("<td>");
-				charGpTd.text(req.GP);
-				charTr.append(charNameTd).append(charStarTd).append(charLevelTd).append(charGearTd).append(charGpTd);
-				$('#tableRequirements').append(charTr);
+				if(req){
+					var charTr = $("<tr>");
+					var charNameTd = $("<td>");
+					charNameTd.text(req.Character);
+					var charStarTd = $("<td>");
+					charStarTd.text(req.Character);//Missing info
+					var charLevelTd = $("<td>");
+					charLevelTd.text(req.Level);
+					var charGearTd = $("<td>");
+					charGearTd.text(req.GearTier);
+					var charGpTd = $("<td>");
+					charGpTd.text(req.GP);
+					charTr.append(charNameTd).append(charStarTd).append(charLevelTd).append(charGearTd).append(charGpTd);
+					$('#tableRequirements').append(charTr);
+				}
 			});
 			_.each(selEventDef.ships, function(element, index, list){
 				var req = _.findWhere(allShips, {Player: selValue, Ship: element.name});
-				var charTr = $("<tr>");
-				var charNameTd = $("<td>");
-				charNameTd.text(req.Ship);
-				var charStarTd = $("<td>");
-				charStarTd.text(req.Ship);//Missing info
-				var charLevelTd = $("<td>");
-				charLevelTd.text(req.Level);
-				var charGearTd = $("<td>");
-				charGearTd.text("N/A");
-				var charGpTd = $("<td>");
-				charGpTd.text(req.GP);
-				charTr.append(charNameTd).append(charStarTd).append(charLevelTd).append(charGearTd).append(charGpTd);
-				$('#tableRequirements').append(charTr);
+				if(req){
+					var charTr = $("<tr>");
+					var charNameTd = $("<td>");
+					charNameTd.text(req.Ship);
+					var charStarTd = $("<td>");
+					charStarTd.text(req.Ship);//Missing info
+					var charLevelTd = $("<td>");
+					charLevelTd.text(req.Level);
+					var charGearTd = $("<td>");
+					charGearTd.text("N/A");
+					var charGpTd = $("<td>");
+					charGpTd.text(req.GP);
+					charTr.append(charNameTd).append(charStarTd).append(charLevelTd).append(charGearTd).append(charGpTd);
+					$('#tableRequirements').append(charTr);
+				}
 			});
 		}
 	}
