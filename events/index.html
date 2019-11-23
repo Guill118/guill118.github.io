@@ -69,6 +69,11 @@ WORK IN PROGRESS
 		});
 		loadCSV("https://dl.dropbox.com/sh/fu29udrhm4sefgp/AAA2VMcxmf7VMa7uJOAKW15za/Stats/ShipStats.csv?raw=1", function(response){
 			allShips = response;
+			_.each(allShips, function(element, index, list){
+				var playerName = element.Player;
+				playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1);
+				element.Player = playerName;
+			});
 		});
 	}
 	
