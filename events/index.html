@@ -100,13 +100,13 @@ WORK IN PROGRESS
 				var req = _.findWhere(allChars, {Player: selValue, Character: element.name});
 				if(req){
 					var charTr = $("<tr>");
-					if(req.GP > element.GP){
+					if(req.GP > element.GP && req.Rarity == "7"){
 					    charTr.addClass("meet-requirements");
 					}
 					var charNameTd = $("<td>");
 					charNameTd.text(req.Character);
 					var charStarTd = $("<td>");
-					charStarTd.text("N/A");//Missing info
+					charStarTd.text(req.Rarity);
 					var charLevelTd = $("<td>");
 					charLevelTd.text(req.Level);
 					var charGearTd = $("<td>");
@@ -121,13 +121,13 @@ WORK IN PROGRESS
 				var req = _.findWhere(allShips, {Player: selValue, Ship: element.name});
 				if(req){
 					var charTr = $("<tr>");
-					if(req.GP > element.GP){
+					if(req.GP > element.GP && req.Rarity == "7"){
 					    charTr.addClass("meet-requirements");
 					}
 					var charNameTd = $("<td>");
 					charNameTd.text(req.Ship);
 					var charStarTd = $("<td>");
-					charStarTd.text("N/A");//Missing info
+					charStarTd.text(req.Rarity);
 					var charLevelTd = $("<td>");
 					charLevelTd.text(req.Level);
 					var charGearTd = $("<td>");
