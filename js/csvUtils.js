@@ -18,6 +18,9 @@
 			if(headers[i].endsWith('"')){
 				headers[i] = headers[i].slice(0, headers[i].length - 1);
 			}
+			if(headers[i].endsWith('\\r')){
+				headers[i] = headers[i].slice(0, headers[i].length - 2);
+			}
 		}
 		for(var i=1;i<lines.length;i++){
 			var obj = {};
