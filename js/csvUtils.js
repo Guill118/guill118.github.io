@@ -11,6 +11,14 @@
 		var lines=csv.split("\n");
 		var result = [];
 		var headers=lines[0].split(",");
+		for(var i=1;i<headers.length;i++){
+			if(headers[i].startsWith('"')){
+				headers[i] = headers[i].slice(1, headers[i].length);
+			}
+			if(headers[i].endsWith('"')){
+				headers[i] = headers[i].slice(0, headers[i].length - 1);
+			}
+		}
 		for(var i=1;i<lines.length;i++){
 			var obj = {};
 			var currentline=lines[i].split(",");
